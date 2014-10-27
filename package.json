@@ -1,0 +1,34 @@
+{
+  "name": "gamerally",
+  "version": "1.0.0",
+  "description": "Gives gamers the ability to easily find other gamers that play similar online games and share similar time availability.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "gamers",
+    "time",
+    "availability",
+    "online",
+    "games"
+  ],
+  "author": "Aaron Rumery",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.3.6",
+    "body-parser": "^1.9.1",
+    "express": "^4.10.0",
+    "express-session": "^1.9.1",
+    "install": "^0.1.7",
+    "levenshtein": "^1.0.5",
+    "moment": "^2.8.3",
+    "mongoose-friends": "^0.2.3",
+    "mongoose-unique-validator": "^0.4.1",
+    "mongoose-validator": "^1.0.2",
+    "passport": "^0.2.1",
+    "passport-steam": "^0.1.4",
+    "q": "^1.0.1"
+  }
+}
