@@ -20,6 +20,7 @@ app.use(session({ secret:  env.express.secret, saveUninitialized: true, resave: 
 passportStart(passport, SteamStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 //Routes 
 routes(app, passport);

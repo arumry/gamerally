@@ -15,7 +15,7 @@
     "games"
   ],
   "author": "Aaron Rumery",
-  "license": "MIT",
+  "license": "DBaJ",
   "dependencies": {
     "bluebird": "^2.3.6",
     "body-parser": "^1.9.1",
