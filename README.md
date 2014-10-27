@@ -11,4 +11,4 @@ GamerAlly is a web app to help gamers find other gamers to play with online.
 
 License
 ----
-MIT
+DBaJ
