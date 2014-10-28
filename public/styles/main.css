@@ -1,3 +1,7 @@
+/* Navbar CSS */
+a {
+    cursor: pointer;
+}
 .navbar-toggle .icon-bar:nth-of-type(2) {
 	  top: 1px;
 }
@@ -23,4 +27,22 @@
 .navbar-toggle.active .icon-bar:nth-of-type(3) {
 	  top: -6px;
 	  transform: rotate(-45deg);
+}
+
+/* Login form CSS */
+.form-signin {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 320px;
+    padding: 15px;
+    margin: 150px auto;
+}
+
+.steam-button {
+    cursor: pointer;
 }

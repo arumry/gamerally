@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>GamerAlly</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./styles/bootstrap-select.css">
 	<link rel="stylesheet" href="./styles/main.css">
 </head>
 <body ng-controller="mainctrl">
@@ -15,23 +16,19 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	  </button>
-	  <a class="navbar-brand" href="#">GamerAlly</a>
+	  <a class="navbar-brand" href="/#/profile">GamerAlly</a>
 	  </div>
 	  <div class="navbar-collapse collapse">
 	    <ul class="nav navbar-nav">
-	      <li class="menu-item"><a href="#">Find Gamers</a>
-	      </li>
-	      <li class="menu-item"><a href="#">Friends</a>
-	      </li>
-	      <li class="menu-item"><a href="#">Inbox</a>
+	      <li class="menu-item"><a href="/#/findgamers">Find Gamers</a>
 	      </li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
-			<a href="#" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
+			<a data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li class="menu-item"><a href="#">Profile</a></li>
-	        		<li class="menu-item"><a href="#">Logout</a></li>
+					<li class="menu-item"><a href="/#/profile">Profile</a></li>
+	        		<li class="menu-item"><a ng-click="logout()">Logout</a></li>
 	        	</ul>
 			</li>
         </ul>
@@ -39,12 +36,15 @@
    </nav>
 	<div ng-view=""></div>
 </div>
- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
-<script src="./app/app.js"></script>
-<script src="./app/controllers/mainCtrl.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
 <script src="./scripts/main.js"></script>
+<script src="./app/app.js"></script>
+<script src="./app/controllers/mainCtrl.js"></script>
+<script src="./app/controllers/LoginCtrl.js"></script>
+<script src="./app/controllers/ProfileCtrl.js"></script>
+<script src="./app/controllers/FindCtrl.js"></script>
 </body>
 </html>
