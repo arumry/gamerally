@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gally">
+<head>
+	<meta charset="UTF-8">
+	<title>GamerAlly</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./styles/main.css">
+</head>
+<body ng-controller="mainctrl">
+<div class="container-fluid">
+  <nav class="navbar navbar-inverse">
+	  <div class="navbar-header">
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="#">GamerAlly</a>
+	  </div>
+	  <div class="navbar-collapse collapse">
+	    <ul class="nav navbar-nav">
+	      <li class="menu-item"><a href="#">Find Gamers</a>
+	      </li>
+	      <li class="menu-item"><a href="#">Friends</a>
+	      </li>
+	      <li class="menu-item"><a href="#">Inbox</a>
+	      </li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+			<a href="#" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="menu-item"><a href="#">Profile</a></li>
+	        		<li class="menu-item"><a href="#">Logout</a></li>
+	        	</ul>
+			</li>
+        </ul>
+	  </div>
+   </nav>
+	<div ng-view=""></div>
+</div>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+<script src="./app/app.js"></script>
+<script src="./app/controllers/mainCtrl.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="./scripts/main.js"></script>
+</body>
+</html>
