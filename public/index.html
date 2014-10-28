@@ -4,47 +4,54 @@
 	<meta charset="UTF-8">
 	<title>GamerAlly</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="./styles/bootstrap-select.css">
 	<link rel="stylesheet" href="./styles/main.css">
 </head>
-<body ng-controller="mainctrl">
-<div class="container-fluid">
-  <nav class="navbar navbar-inverse">
-	  <div class="navbar-header">
-	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	  </button>
-	  <a class="navbar-brand" href="/#/profile">GamerAlly</a>
-	  </div>
-	  <div class="navbar-collapse collapse">
-	    <ul class="nav navbar-nav">
-	      <li class="menu-item"><a href="/#/findgamers">Find Gamers</a>
-	      </li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown">
-			<a data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li class="menu-item"><a href="/#/profile">Profile</a></li>
-	        		<li class="menu-item"><a ng-click="logout()">Logout</a></li>
-	        	</ul>
-			</li>
-        </ul>
-	  </div>
-   </nav>
-	<div ng-view=""></div>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
-<script src="./scripts/main.js"></script>
-<script src="./app/app.js"></script>
-<script src="./app/controllers/mainCtrl.js"></script>
-<script src="./app/controllers/LoginCtrl.js"></script>
-<script src="./app/controllers/ProfileCtrl.js"></script>
-<script src="./app/controllers/FindCtrl.js"></script>
-</body>
+	<body ng-controller="mainctrl">
+		<div class="container-fluid">
+		  <nav class="navbar navbar-inverse">
+			  <div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="/#/profile">GamerAlly</a>
+			  </div>
+			  <div class="navbar-collapse collapse">
+			    <ul class="nav navbar-nav">
+			      <li class="menu-item"><a href="/#/findgamers">Find Gamers</a>
+			      </li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="menu-item"><a href="/#/profile">Profile</a></li>
+			        		<li class="menu-item"><a ng-click="logout()">Logout</a></li>
+			        	</ul>
+					</li>
+		        </ul>
+			  </div>
+		   </nav>
+			<div ng-view=""></div>
+		</div>
+		<div class="container text-center">
+		    <hr />
+		  <footer class="row">
+		        <div class="col-xs-12">
+		          <a href="/#/login">© 2014 GamerAlly</a>
+		        </div>
+		  </footer>
+		</div>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+		<script src="./scripts/main.js"></script>
+		<script src="./app/app.js"></script>
+		<script src="./app/controllers/mainCtrl.js"></script>
+		<script src="./app/controllers/LoginCtrl.js"></script>
+		<script src="./app/controllers/ProfileCtrl.js"></script>
+		<script src="./app/controllers/FindCtrl.js"></script>
+	</body>
 </html>
