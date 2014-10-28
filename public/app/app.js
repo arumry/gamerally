@@ -1,4 +1,4 @@
-var app = angular.module('gally', ['ngRoute']);
+var app = angular.module('gally', ['ngRoute', 'angularModalService']);
 
 //Router
 app.config(['$routeProvider',
@@ -12,12 +12,6 @@ app.config(['$routeProvider',
       }).when('/profile', {
         templateUrl: './app/views/profile.html',
         controller: 'ProfileCtrl' 
-      }).when('/friends', {
-        templateUrl: './app/views/friends.html',
-        controller: 'FriendsCtrl'
-      }).when('/inbox', {
-        templateUrl: './app/views/inbox.html',
-        controller: 'InboxCtrl'
       }).when('/findgamers', {
         templateUrl: './app/views/findgamers.html',
         controller: 'FindCtrl'
