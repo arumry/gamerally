@@ -1,4 +1,4 @@
-var app = angular.module('gally', ['ngRoute', 'angularModalService']);
+var app = angular.module('gally', ['ngRoute', 'SlideViewer']);
 
 //Router
 app.config(['$routeProvider',

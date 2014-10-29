@@ -5,6 +5,7 @@
 	<title>GamerAlly</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="./styles/main.css">
+	<link rel="stylesheet" href="./styles/slideviewer.css">
 </head>
 	<body ng-controller="mainctrl">
 		<div class="container-fluid">
@@ -37,7 +38,7 @@
 		</div>
 		<div class="container text-center">
 		    <hr />
-		  <footer class="row">
+		  <footer class="row clearfix">
 		        <div class="col-xs-12">
 		          <a href="/#/login">© 2014 GamerAlly</a>
 		        </div>
@@ -47,7 +48,11 @@
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
-		<script src="./app/services/modal-service.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-touch.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
+		<script src="./app/directives/angular-slider/slideviewer.js"></script>
+		
 		<script src="./scripts/main.js"></script>
 		<script src="./app/app.js"></script>
 		<script src="./app/controllers/mainCtrl.js"></script>

@@ -25,14 +25,15 @@
           </ul> 
         </div>
     	<div class="col-sm-9">
-          <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a data-target="#home" data-toggle="tab">Current Online Games</a></li>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
+            <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
             <li><a data-target="#friends" data-toggle="tab">Friends</a></li>
             <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
             <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
           </ul>   
           <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane active" id="curgames">
               <div class="table-responsive">
                 <table class="table table-hover">
                   <thead>
@@ -97,6 +98,26 @@
                 </table>
               </div><!--/table-resp-->
              </div><!--/tab-pane-->
+             <div class="tab-pane" id="newgames">
+                 <div class="row">
+                        <form class="form-search text-center">
+                              <div class="input-append g-search">
+                                  <input type="text" class="search-query">
+                                  <div class="btn btn-success">Search</div>
+                              </div>
+                        </form>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="thumbnail text-center">
+                        <img src="http://upload.wikimedia.org/wikipedia/en/9/92/Halo2-cover.png" alt="...">
+                        <div class="caption">
+                          <h3>Halo 2</h3>
+                          <p>Great game where you kill aliens...</p>
+                          <p><a href="#" class="btn btn-primary" role="button">Add game</a></p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+             </div>
              <div class="tab-pane" id="messages">
                 <div class="table-responsive">
                 <table class="table table-hover">

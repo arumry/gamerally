@@ -1,4 +1,8 @@
 /* Navbar CSS */
+.clearfix {
+    clear: both;
+}
+
 a {
     cursor: pointer;
 }
@@ -45,4 +49,21 @@ a {
 
 .steam-button {
     cursor: pointer;
+}
+
+/*Game search area*/
+.g-search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Slide viewer & find gamer area */
+.players {
+    height: auto;
+}
+
+.player1 {
+    height: 400px;
+    margin-top: 25px;
+    background-color: #DDDDDD;
 }
