@@ -1,8 +1,9 @@
-var app = angular.module('gally', ['ngRoute', 'SlideViewer']);
+var app = angular.module('gally', ['ngRoute', 'SlideViewer', 'angular-loading-bar']);
 
 //Router
-app.config(['$routeProvider',
-  function($routeProvider, $rootScope, $q, $route) {
+app.config(['$routeProvider','$httpProvider',
+  function($routeProvider, $httpProvider) {
+    $httpProvider.responseInterceptors.push('responseObserver');
     $routeProvider
       .when('/', {
         redirectTo: '/login'

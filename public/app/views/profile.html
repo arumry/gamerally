@@ -6,9 +6,10 @@
   		<div class="col-sm-3"><!--left col-->
           <ul class="list-group">
             <li class="list-group-item text-muted">Profile</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> aaronrumery</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> 22</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> Casual</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{user.displayname}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{user.age}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Bio</strong></span> <br/>{{user.bio}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{user.type}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> 2.13.2014</li>   
           </ul>             
@@ -38,61 +39,16 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>Cover Art</th>
                       <th>Game</th>
                       <th>Time Available</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr ng-repeat="game in user.games">
                       <td>1</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>                 
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td> 
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                     <tr>
-                      <td>8</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
+                      <td>{{game.title}}</td>
+                      <td>{{game.avail}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -102,16 +58,16 @@
                  <div class="row">
                         <form class="form-search text-center">
                               <div class="input-append g-search">
-                                  <input type="text" class="search-query">
-                                  <div class="btn btn-success">Search</div>
+                                  <input ng-model="gameTitle" type="text" class="search-query">
+                                  <div ng-click="searchGame()" class="btn btn-success">Search</div>
                               </div>
                         </form>
-                    <div class="col-sm-6 col-md-4">
+                    <div ng-repeat="game in sGames" class="col-sm-6 col-md-4 row-fluid">
                       <div class="thumbnail text-center">
-                        <img src="http://upload.wikimedia.org/wikipedia/en/9/92/Halo2-cover.png" alt="...">
+                        <img src="{{game.thumb}}" />
                         <div class="caption">
-                          <h3>Halo 2</h3>
-                          <p>Great game where you kill aliens...</p>
+                          <h3>{{game.title}}</h3>
+                          <p>{{game.short_description}}</p>
                           <p><a href="#" class="btn btn-primary" role="button">Add game</a></p>
                         </div>
                       </div>

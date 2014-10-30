@@ -29,6 +29,8 @@
     "mongoose-validator": "^1.0.2",
     "passport": "^0.2.1",
     "passport-steam": "^0.1.4",
-    "q": "^1.0.1"
+    "q": "^1.0.1",
+    "request": "^2.47.0",
+    "unirest": "^0.2.9"
   }
 }

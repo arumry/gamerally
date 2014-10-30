@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GamerAlly</title>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
 	<link rel="stylesheet" href="./styles/main.css">
 	<link rel="stylesheet" href="./styles/slideviewer.css">
+	<link rel="stylesheet" href="./styles/loadingbar.css">
 </head>
 	<body ng-controller="mainctrl">
-		<div class="container-fluid">
-		  <nav class="navbar navbar-inverse">
+		  <nav ng-show="!(isActive())" class="navbar navbar-inverse">
 			  <div class="navbar-header">
 			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 			      <span class="icon-bar"></span>
@@ -28,15 +28,16 @@
 					<a data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li class="menu-item"><a href="/#/profile">Profile</a></li>
-			        		<li class="menu-item"><a ng-click="logout()">Logout</a></li>
+			        		<li class="menu-item"><a href="/auth/steam/logout">Logout</a></li>
 			        	</ul>
 					</li>
 		        </ul>
 			  </div>
 		   </nav>
+		<div class="container-fluid">
 			<div ng-view=""></div>
 		</div>
-		<div class="container text-center">
+		<div class="text-center">
 		    <hr />
 		  <footer class="row clearfix">
 		        <div class="col-xs-12">
@@ -52,9 +53,11 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-touch.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
 		<script src="./app/directives/angular-slider/slideviewer.js"></script>
-		
+		<script src="./app/directives/angular-loader/loadingbar.js"></script>
 		<script src="./scripts/main.js"></script>
 		<script src="./app/app.js"></script>
+		<script src="./app/services/userSvc.js"></script>
+		<script src="./app/services/resobserve.js"></script>
 		<script src="./app/controllers/mainCtrl.js"></script>
 		<script src="./app/controllers/LoginCtrl.js"></script>
 		<script src="./app/controllers/ProfileCtrl.js"></script>
