@@ -67,8 +67,11 @@
                         <img src="{{game.thumb}}" />
                         <div class="caption">
                           <h3>{{game.title}}</h3>
+                          <div ng-repeat="(key, value) in game.platforms">
+                            {{value}}
+                          </div>
                           <p>{{game.short_description}}</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Add game</a></p>
+                          <p><a ng-click="addGame(game)" class="btn btn-primary" role="button">Add game</a></p>
                         </div>
                       </div>
                     </div>

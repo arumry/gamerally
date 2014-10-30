@@ -1,18 +1,23 @@
-app.controller('ProfileCtrl', function($scope, userSvc){
-	userSvc.getUser().then(function(user){
-		$scope.user = user;
-	}, function(err){
-		if(err) console.error(err) //worry about this later.
-		//perhaps doing a sweet alert and then redirect back to the login
-	});
+app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
+	$scope.user = userData;
 	$scope.gameTitle = '';
 	$scope.searchGame = function(){
 		if(!$scope.gameTitle) return;
 		userSvc.getGameByTitle($scope.gameTitle).then(function(games){
 			$scope.sGames = games;
-			console.log(games);
 		}, function(err){
 			//swal that there was an error, or no results.
 		})
+	};
+	$scope.addGame = function(game){
+		userSvc.setCurGame(game.title);
+		ModalService.showModal({
+          templateUrl: "app/modaltemplates/gameTime.html",
+          controller: "gameTime"
+        }).then(function(modal) {
+          modal.close.then(function(result) {
+            console.log(result);
+          });
+        });
 	};
 });

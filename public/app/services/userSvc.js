@@ -1,5 +1,14 @@
 app.service('userSvc', function($q, $http){
 	var user;
+	var curGame;
+	this.setCurGame = function(title){
+		curGame = title;
+	};
+
+	this.getCurGame = function(){
+		return curGame;
+	};
+	
 	this.getUser = function(){
 		var defer = $q.defer();
 		$http.get('/user').then(function(data){
@@ -15,6 +24,17 @@ app.service('userSvc', function($q, $http){
 		$http.get('/game?title='+title).then(function(data){
 			games = data.data;
 			defer.resolve(games);
+		}, function(err){
+			defer.reject(err);
+		});
+		return defer.promise;
+	};
+	this.postGame = function(game){
+		var defer = $q.defer();
+		$http.post('/game').then(function(data){
+			console.log(data);
+			result = data.data;
+			defer.resolve(result);
 		}, function(err){
 			defer.reject(err);
 		});
