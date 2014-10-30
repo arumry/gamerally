@@ -57,6 +57,10 @@ a {
     margin-bottom: 20px;
 }
 
+.game-tiles {
+    height: 600px;
+}
+
 /* Slide viewer & find gamer area */
 .players {
     height: auto;

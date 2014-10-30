@@ -15,8 +15,15 @@ app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
           templateUrl: "app/modaltemplates/gameTime.html",
           controller: "gameTime"
         }).then(function(modal) {
-          modal.close.then(function(result) {
-            console.log(result);
+          modal.close.then(function(times) {
+             if(!times){
+             	return;
+             } else {
+             	game.avail = times;
+             	userSvc.postGame(game).then(function(){
+             		console.log('hello');
+             	});
+             }
           });
         });
 	};

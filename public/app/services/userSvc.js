@@ -8,7 +8,7 @@ app.service('userSvc', function($q, $http){
 	this.getCurGame = function(){
 		return curGame;
 	};
-	
+
 	this.getUser = function(){
 		var defer = $q.defer();
 		$http.get('/user').then(function(data){
@@ -31,7 +31,7 @@ app.service('userSvc', function($q, $http){
 	};
 	this.postGame = function(game){
 		var defer = $q.defer();
-		$http.post('/game').then(function(data){
+		$http.post('/game', game).then(function(data){
 			console.log(data);
 			result = data.data;
 			defer.resolve(result);

@@ -46,9 +46,9 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="game in user.games">
-                      <td>1</td>
-                      <td>{{game.title}}</td>
-                      <td>{{game.avail}}</td>
+                      <td><img ng-src="{{game.thumb}}"/></td>
+                      <td><h4>{{game.title}}</h4></td>
+                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5></td>
                     </tr>
                   </tbody>
                 </table>
@@ -63,8 +63,8 @@
                               </div>
                         </form>
                     <div ng-repeat="game in sGames" class="col-sm-6 col-md-4 row-fluid">
-                      <div class="thumbnail text-center">
-                        <img src="{{game.thumb}}" />
+                      <div class="thumbnail text-center game-tiles">
+                        <img ng-src="{{game.thumb}}" />
                         <div class="caption">
                           <h3>{{game.title}}</h3>
                           <div ng-repeat="(key, value) in game.platforms">

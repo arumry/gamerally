@@ -1,13 +1,13 @@
 <style type="text/css">
 #overlay {
     position: fixed;
-    left: 25%;
-    top: 25%;
+    left: 1%;
+    top: 1%;
     padding: 25px; 
     border: 2px solid black;
     background-color: #ffffff;
-    width: 50%;
-    height: 50%;
+    width: 98%;
+    height: 98%;
     z-index: 100;
 }
 #fade {
@@ -22,10 +22,22 @@
     height: 100%;
     z-index: 90;
 }
+
 </style>
 <div id="overlay" ng-show="display">
-    What times are you available to play {{title}}?
-    <br />
-    <a href ng-click="close()">Close</a>
+    <h6>What time are you available to play {{title}} normally?</h6>
+        <div class="col-xs-12 col-xs-push-0 col-md-6 col-md-push-2">
+        <label for="starttime">Start</label>
+        <timepicker id="starttime" ng-model="starttime" hour-step="hstep" minute-step="mstep"></timepicker>
+        </div>
+        
+        <div class="col-xs-12 col-xs-push-0 col-md-6 col-md-push-2">
+        <label class="time" for="endtime">End</label>
+        <timepicker id="endtime" ng-model="endtime" hour-step="hstep" minute-step="mstep"></timepicker>
+        </div>
+      <div class="text-center">
+          <button class="btn btn-success" ng-click="submitTime()">Submit</button>
+          <button class="btn btn-danger" ng-click="cancelGame()">Cancel</button>
+      </div>
 </div>
 <div id="fade" ng-show="display"></div>
