@@ -6,9 +6,16 @@ app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
 		userSvc.getGameByTitle($scope.gameTitle).then(function(games){
 			$scope.sGames = games;
 		}, function(err){
-			//swal that there was an error, or no results.
-		})
+			swal("Uh oh!", "Something unexpected happened. Try your search again!", "error");
+		});
 	};
+
+  $scope.getGames = function(){
+    userSvc.getGames().then(function(games){
+      $scope.user.games = games;
+    });
+  };
+
 	$scope.addGame = function(game){
 		userSvc.setCurGame(game.title);
 		ModalService.showModal({
@@ -21,11 +28,10 @@ app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
              } else {
              	game.avail = times;
              	userSvc.postGame(game).then(function(updated){
-             		console.log(typeof updated);
-             		if(updated === 'false'){
-             			swal("Oops...", "You've already added this game before.", "error");
+             		if(updated === 'true'){
+                  swal("Woot!", "Your game has been added!", "success");
              		} else {
-             			swal("Woot!", "Your game has been added!", "success")
+             			swal("Oops...", "You've already added this game before.", "error");
              		}
              	});
              }
@@ -33,7 +39,32 @@ app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
         });
 	};
 
+  $scope.editGameTime = function(game){
+    userSvc.setCurGame(game.title);
+    ModalService.showModal({
+          templateUrl: "app/modaltemplates/gameTime.html",
+          controller: "gameTime"
+        }).then(function(modal) {
+          modal.close.then(function(times) {
+             if(!times){
+              return;
+             } else {
+              game.avail = times;
+              userSvc.editGameTime(game).then(function(updated){
+                if(updated === 'true'){
+                  swal("Tick tock!", "The time was changed successfully!", "success");
+                } else {
+                  swal("Hmmm...", "Something went wrong. Try again!", "error");
+                }
+              });
+             }
+          });
+        });
+  };
+
   $scope.deleteGame = function(game){
+    var id = game['_id'];
+    var index = $scope.user.games.indexOf(game);
     swal({title: "Are you sure you want to delete " + game.title + " ?",   
     text: "You will not be able to recover this game after it is deleted!",   
     type: "warning",   
@@ -43,7 +74,15 @@ app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
     cancelButtonText: "No! I want the game.",   
     closeOnConfirm: false,   
     closeOnCancel: false }, function(isConfirm){
-      if (isConfirm) { swal("Deleted!", "Your game has been deleted!", "success");
+      if (isConfirm) { 
+        userSvc.delGame(id).then(function(result){
+          if(result === 'true'){
+            $scope.user.games.splice(index, 1);
+            swal("Deleted!", "Your game has been deleted!", "success");
+          } else {
+            swal("Oh no!", "Something went wrong. Try again!", "error");
+          }
+        });
       } else { swal("Cancelled", "Your game is safe :)", "error"); } 
     });
   };

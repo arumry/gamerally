@@ -27,7 +27,7 @@
         </div>
     	<div class="col-sm-9">
           <ul class="nav nav-tabs">
-            <li class="active"><a data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
+            <li class="active"><a ng-click="getGames()" data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
             <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
             <li><a data-target="#friends" data-toggle="tab">Friends</a></li>
             <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
@@ -50,7 +50,7 @@
                          <button ng-click="deleteGame(game)" class="btn btn-danger">Delete</button>
                       </td>
                       <td><h4>{{game.title}}</h4></td>
-                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button ng-click="editGameTime()" class="btn btn-primary">Edit time</button></td>
+                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button ng-click="editGameTime(game)" class="btn btn-primary">Edit time</button></td>
                     </tr>
                   </tbody>
                 </table>
