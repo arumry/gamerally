@@ -46,9 +46,11 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="game in user.games">
-                      <td><img ng-src="{{game.thumb}}"/></td>
+                      <td><img ng-src="{{game.thumb}}"/>
+                         <button ng-click="deleteGame(game)" class="btn btn-danger">Delete</button>
+                      </td>
                       <td><h4>{{game.title}}</h4></td>
-                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5></td>
+                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button ng-click="editGameTime()" class="btn btn-primary">Edit time</button></td>
                     </tr>
                   </tbody>
                 </table>
