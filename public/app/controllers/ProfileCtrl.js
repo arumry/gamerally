@@ -5,7 +5,7 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalServ
   $scope.pendingFriends = friendData.pendingFriends;
   $scope.requestedFriends = friendData.requestedFriends;
   $scope.getAcceptedFriends = function(){
-    friendService.getRequestedFriends().then(function({
+    friendService.getRequestedFriends().then(function(friends){
       $scope.acceptedFriends = friends;
     });
   }
