@@ -1,6 +1,16 @@
 app.service('userSvc', function($q, $http){
 	var user;
+	var curFriend;
 	var curGame;
+
+	this.setCurFriend = function(friend){
+		curFriend = friend;
+	};
+
+	this.getCurFriend = function(){
+		return curFriend;
+	};
+
 	this.setCurGame = function(title){
 		curGame = title;
 	};

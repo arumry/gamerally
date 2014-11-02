@@ -20,6 +20,20 @@ app.config(['$routeProvider','$httpProvider',
                 return defer.resolve(user);
             });
             return defer.promise;   
+          },
+          friendData: function($q, friendService){
+            var defer = $q.defer();
+            var friendObj = {};
+            var promise1 = friendService.getPendingFriends();
+            var promise2 = friendService.getRequestedFriends();
+            var promise3 = friendService.getAcceptedFriends();
+            $q.all([promise1, promise2, promise3]).then(function(friendResults){
+              friendObj.pendingFriends = friendResults[0].data;
+              friendObj.requestedFriends = friendResults[1].data;
+              friendObj.acceptedFriends = friendResults[2].data;
+              defer.resolve(friendObj);
+            });
+            return defer.promise;
           }
         } 
       }).when('/findgamers', {

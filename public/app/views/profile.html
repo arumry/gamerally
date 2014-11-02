@@ -1,6 +1,6 @@
 	<div class="row">
-  		<div class="col-sm-10"><h1>aaronrumery</h1></div>
-    	<div class="col-sm-2"><a href="http://steamcommunity.com/profiles/76561198160257610/" class="pull-right"><img title="Profile image" class="img-circle img-responsive" src="http://media.steampowered.com/steamcommunity/public/images/avatars/6a/6a351d2a784c62067444098324563127001100ec_medium.jpg"></a></div>
+  		<div class="col-sm-10"><h1>{{user.displayname}}</h1></div>
+    	<div class="col-sm-2"><a ng-href="{{user.profileurl}}" class="pull-right"><img title="Profile image" class="img-circle img-responsive" ng-src="{{user.avatarmd}}"></a></div>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
@@ -10,26 +10,22 @@
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{user.age}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Bio</strong></span> <br/>{{user.bio}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{user.type}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> 2.13.2014</li>   
           </ul>             
           <div class="panel panel-default">
-            <div class="panel-heading">Steam Profile<i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body"><a target="_blank" href="http://steamcommunity.com/profiles/76561198160257610/">Go to Steam</a></div>
+            <div class="panel-heading">Gamer Accounts<i class="fa fa-link fa-1x"></i></div>
+            <div class="panel-body"><a target="_blank" ng-href="{{user.profileurl}}">Steam</a></div>
           </div>
-          
-          
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Incoming Friend Requests</strong></span> 125</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Sent Friend Requests</strong></span> 13</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Incoming Friend Requests</strong></span> {{pendingFriends.length}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Sent Friend Requests</strong></span> {{requestedFriends.length}}</li>
           </ul> 
         </div>
     	<div class="col-sm-9">
           <ul class="nav nav-tabs">
             <li class="active"><a ng-click="getGames()" data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
             <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
-            <li><a data-target="#friends" data-toggle="tab">Friends</a></li>
+            <li><a ng-click="getAcceptedFriends()" data-target="#friends" data-toggle="tab">Friends</a></li>
             <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
             <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
           </ul>   
@@ -124,62 +120,16 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <!--Will do profile image in th#-->
-                      <th>#</th>
+                      <th>Profile</th>
                       <th>Display Name</th>
-                      <th>Last Seen</th>
+                      <th>Date added</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>                 
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td> 
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                     <tr>
-                      <td>8</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
+                    <tr ng-repeat="friend in acceptedFriends">
+                      <td><a ng-click="viewFriend(friend)"><img ng-src="{{friend.friend.avatarthumb}}"/></a></td>
+                      <td>{{friend.friend.displayname}}</td>
+                      <td>{{friend.added | date:'MM/dd/yyyy @ h:mma'}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -190,7 +140,7 @@
                       <div class="form-group">
                         <div class="col-xs-12">
                           <div class="alert alert-info">
-                              <p>Your display name and profile image can be changed within your Steam account</p>
+                              <p>Your display name and profile image can be changed within your Steam account. Changes will be reflected after your next login.</p>
                           </div>
                         </div>
                       </div>

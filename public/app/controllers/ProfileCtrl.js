@@ -1,6 +1,15 @@
-app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
+app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalService, userData, friendData){
 	$scope.user = userData;
 	$scope.gameTitle = '';
+  $scope.acceptedFriends = friendData.acceptedFriends;
+  $scope.pendingFriends = friendData.pendingFriends;
+  $scope.requestedFriends = friendData.requestedFriends;
+  $scope.getAcceptedFriends = function(){
+    friendService.getRequestedFriends().then(friends){
+      $scope.acceptedFriends = friends;
+    };
+  }
+  
 	$scope.searchGame = function(){
 		if(!$scope.gameTitle) return;
 		userSvc.getGameByTitle($scope.gameTitle).then(function(games){
@@ -85,5 +94,19 @@ app.controller('ProfileCtrl', function($scope, userSvc, userData, ModalService){
         });
       } else { swal("Cancelled", "Your game is safe :)", "error"); } 
     });
+  };
+
+  $scope.viewFriend = function(friend){
+    userSvc.setCurFriend(friend);
+    ModalService.showModal({
+          templateUrl: "app/modaltemplates/friend.html",
+          controller: "friend"
+        }).then(function(modal) {
+          modal.close.then(function(friend) {
+             if(friend.remove){
+              //delete friend 
+             } 
+          });
+        });
   };
 });
