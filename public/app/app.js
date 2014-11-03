@@ -24,14 +24,8 @@ app.config(['$routeProvider','$httpProvider',
           friendData: function($q, friendService){
             var defer = $q.defer();
             var friendObj = {};
-            var promise1 = friendService.getPendingFriends();
-            var promise2 = friendService.getRequestedFriends();
-            var promise3 = friendService.getAcceptedFriends();
-            $q.all([promise1, promise2, promise3]).then(function(friendResults){
-              friendObj.pendingFriends = friendResults[0].data;
-              friendObj.requestedFriends = friendResults[1].data;
-              friendObj.acceptedFriends = friendResults[2].data;
-              defer.resolve(friendObj);
+            friendService.getAllFriends().then(function(friends){
+              defer.resolve(friends);
             });
             return defer.promise;
           }

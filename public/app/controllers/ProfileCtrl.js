@@ -1,12 +1,21 @@
 app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalService, userData, friendData){
-	$scope.user = userData;
+	var friendCounter = function(status, arr){
+    var counter = 0;
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i].status === status){
+        counter += 1;
+      }
+    }
+    return counter;
+  };
+  $scope.user = userData;
 	$scope.gameTitle = '';
-  $scope.acceptedFriends = friendData.acceptedFriends;
-  $scope.pendingFriends = friendData.pendingFriends;
-  $scope.requestedFriends = friendData.requestedFriends;
-  $scope.getAcceptedFriends = function(){
-    friendService.getRequestedFriends().then(function(friends){
-      $scope.acceptedFriends = friends;
+  $scope.allFriends = friendData;
+  $scope.pendingFriends = friendCounter('pending', friendData);
+  $scope.requestedFriends = friendCounter('requested', friendData);
+  $scope.getAllFriends = function(){
+    friendService.getAllFriends().then(function(friends){
+      $scope.allFriends = friends;
     });
   }
   
@@ -97,15 +106,14 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalServ
   };
 
   $scope.viewFriend = function(friend){
+    var index = $scope.allFriends.indexOf(friend);
     userSvc.setCurFriend(friend);
     ModalService.showModal({
           templateUrl: "app/modaltemplates/friend.html",
           controller: "friend"
         }).then(function(modal) {
-          modal.close.then(function(friend) {
-             if(friend.remove){
-              //delete friend 
-             } 
+          modal.close.then(function() {
+            $scope.getAllFriends();
           });
         });
   };

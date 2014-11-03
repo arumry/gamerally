@@ -8,24 +8,20 @@
             <li class="list-group-item text-muted">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{user.displayname}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{user.age}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong> Bio</strong></span> <br/>{{user.bio}}</li>
+            <li class="list-group-item"><span class="pull-left"><strong> Info</strong></span> <br/>{{user.info}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{user.type}}</li>
           </ul>             
-          <div class="panel panel-default">
-            <div class="panel-heading">Gamer Accounts<i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body"><a target="_blank" ng-href="{{user.profileurl}}">Steam</a></div>
-          </div>
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Incoming Friend Requests</strong></span> {{pendingFriends.length}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Sent Friend Requests</strong></span> {{requestedFriends.length}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Incoming Friend Requests</strong></span> {{pendingFriends}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Sent Friend Requests</strong></span> {{requestedFriends}}</li>
           </ul> 
         </div>
     	<div class="col-sm-9">
           <ul class="nav nav-tabs">
             <li class="active"><a ng-click="getGames()" data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
             <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
-            <li><a ng-click="getAcceptedFriends()" data-target="#friends" data-toggle="tab">Friends</a></li>
+            <li><a ng-click="getAllFriends()" data-target="#friends" data-toggle="tab">Friends</a></li>
             <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
             <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
           </ul>   
@@ -122,13 +118,15 @@
                     <tr>
                       <th>Profile</th>
                       <th>Display Name</th>
+                      <th>Status</th>
                       <th>Date added</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="friend in acceptedFriends">
+                    <tr ng-repeat="friend in allFriends">
                       <td><a ng-click="viewFriend(friend)"><img ng-src="{{friend.friend.avatarthumb}}"/></a></td>
                       <td>{{friend.friend.displayname}}</td>
+                      <td>{{friend.status}}</td>
                       <td>{{friend.added | date:'MM/dd/yyyy @ h:mma'}}</td>
                     </tr>
                   </tbody>
@@ -162,15 +160,15 @@
                       </div>
                       <div class="form-group">   
                           <div class="col-xs-12">
-                              <label for="bio"><h4>Bio </h4></label>
-                              <textarea class="form-control" name="bio" id="bio" placeholder="Bio, 300 character limit" title="Bio, limit 300 characters"></textarea>
+                              <label for="lf"><h4>Info </h4></label>
+                              <textarea class="form-control" name="bio" id="lf" placeholder="Enter your gamertags/public profiles and any other info you want here..."></textarea>
                           </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save changes</button>
+                               	
                             </div>
                       </div>
               	</form>

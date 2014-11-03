@@ -1,25 +1,26 @@
 app.service('friendService', function($q, $http){
-       this.getPendingFriends = function(){
-       		var defer = $q.defer();
-       		$http.get('/friends/pending').then(function(pendingFriends){
-       			defer.resolve(pendingFriends);
-       		});
-       		return defer.promise;
+       this.getAllFriends = function(){
+       	var defer = $q.defer();
+       	$http.get('/friends/all').then(function(data){
+                     var friends = data.data;
+       		defer.resolve(friends);
+       	});
+       	return defer.promise;
        };
 
-       this.getRequestedFriends = function(){
-       		var defer = $q.defer();
-       		$http.get('/friends/requested').then(function(requestedFriends){
-       			defer.resolve(requestedFriends);
-       		});
-       		return defer.promise;
+       this.deleteFriend = function(id){
+              var defer = $q.defer();
+              $http.delete('/friend/' + id).then(function(result){
+                     defer.resolve(result);
+              });
+              return defer.promise;
        };
 
-       this.getAcceptedFriends = function(){
-       		var defer = $q.defer();
-       		$http.get('/friends/accepted').then(function(acceptedFriends){
-       			defer.resolve(acceptedFriends);
-       		});
-       		return defer.promise;
+       this.requestFriend = function(id){
+              var defer = $q.defer();
+              $http.post('/friend/' + id).then(function(result){
+                     defer.resolve(result);
+              });
+              return defer.promise;
        };
 });
