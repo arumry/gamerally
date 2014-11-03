@@ -29,6 +29,16 @@ app.service('userSvc', function($q, $http){
 		});
 		return defer.promise;
 	};
+
+	this.setUserSettings = function(updatedUser){
+		var defer = $q.defer();
+		$http.put('/user/settings', updatedUser).then(function(){
+			defer.resolve();
+		}, function(err){
+			defer.reject();
+		});
+		return defer.promise;
+	}
 	this.getGameByTitle = function(title){
 		var defer = $q.defer();
 		$http.get('/game?title='+title).then(function(data){

@@ -8,16 +8,28 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalServ
     }
     return counter;
   };
+  var checkType = function(type, arr){
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i].name == $scope.user.type){
+        return i;
+      }
+    }
+    return 0;
+  };
+  
   $scope.user = userData;
 	$scope.gameTitle = '';
   $scope.allFriends = friendData;
   $scope.pendingFriends = friendCounter('pending', friendData);
   $scope.requestedFriends = friendCounter('requested', friendData);
+  $scope.gamerTypes = [{name: 'Casual'},{ name: 'Hardcore'},{ name: 'Pro'}];
+  $scope.selectedType = $scope.gamerTypes[checkType($scope.user.type, $scope.gamerTypes)];
+  
   $scope.getAllFriends = function(){
     friendService.getAllFriends().then(function(friends){
       $scope.allFriends = friends;
     });
-  }
+  };
   
 	$scope.searchGame = function(){
 		if(!$scope.gameTitle) return;
@@ -111,10 +123,22 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalServ
     ModalService.showModal({
           templateUrl: "app/modaltemplates/friend.html",
           controller: "friend"
-        }).then(function(modal) {
+    }).then(function(modal) {
           modal.close.then(function() {
             $scope.getAllFriends();
           });
-        });
+    });
+  };
+
+  $scope.saveUserSettings = function(){
+    var updatedUser = {};
+    updatedUser.type = $scope.selectedType.name;
+    updatedUser.age = $scope.user.age;
+    updatedUser.info = $scope.user.info;
+    userSvc.setUserSettings(updatedUser).then(function(){
+      swal("Success!", "Your user settings have been updated.", "success");
+    }, function(){
+      swal("Uh oh!", "Something unexpected happened. Try savings your settings again!", "error");
+    });
   };
 });

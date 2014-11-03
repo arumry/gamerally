@@ -1,2 +1,2 @@
-app.controller('LoginCtrl', function($window, $scope){
+app.controller('LoginCtrl', function($scope){
 });

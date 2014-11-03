@@ -9,7 +9,7 @@
             <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{user.displayname}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{user.age}}</li>
             <li class="list-group-item"><span class="pull-left"><strong> Info</strong></span> <br/>{{user.info}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{user.type}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{selectedType.name}}</li>
           </ul>             
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
@@ -39,10 +39,10 @@
                   <tbody>
                     <tr ng-repeat="game in user.games">
                       <td><img ng-src="{{game.thumb}}"/>
-                         <button ng-click="deleteGame(game)" class="btn btn-danger">Delete</button>
+                         <button type="button" ng-click="deleteGame(game)" class="btn btn-danger">Delete</button>
                       </td>
                       <td><h4>{{game.title}}</h4></td>
-                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button ng-click="editGameTime(game)" class="btn btn-primary">Edit time</button></td>
+                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button type="button" ng-click="editGameTime(game)" class="btn btn-primary">Edit time</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -53,7 +53,7 @@
                         <form class="form-search text-center">
                               <div class="input-append g-search">
                                   <input ng-model="gameTitle" type="text" class="search-query">
-                                  <div ng-click="searchGame()" class="btn btn-success">Search</div>
+                                  <button type="button" ng-click="searchGame()" class="btn btn-success">Search</button>
                               </div>
                         </form>
                     <div ng-repeat="game in sGames" class="col-sm-6 col-md-4 row-fluid">
@@ -76,7 +76,7 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>Profile</th>
                       <th>Display Name</th>
                       <th>Time Sent</th>
                       <th>Message</th>
@@ -84,28 +84,10 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>                 
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td> 
-                      <td>Table cell</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   </tbody>
                 </table>
@@ -145,30 +127,26 @@
                       <div class="form-group"> 
                           <div class="col-xs-6">
                               <label for="type"><h4>Gamer Type </h4></label>
-                              <select id="type" class="selectpicker">
-                                <option>Casual</option>
-                                <option>Hardcore</option>
-                                <option>Pro</option>
+                              <select ng-model="selectedType" ng-options="type.name for type in gamerTypes">
                               </select>
                           </div>
                       </div>
                       <div class="form-group">
                         <div class="col-xs-6">
                           <label for="age"><h4>Age </h4></label>
-                          <input id="age" type="number" size="6" name="age" min="15" max="100" value="21">
+                          <input ng-model="user.age" id="age" type="number" size="6" name="age" min="0" max="100">
                         </div>
                       </div>
                       <div class="form-group">   
                           <div class="col-xs-12">
-                              <label for="lf"><h4>Info </h4></label>
-                              <textarea class="form-control" name="bio" id="lf" placeholder="Enter your gamertags/public profiles and any other info you want here..."></textarea>
+                              <label for="info"><h4>Info </h4></label>
+                              <textarea ng-model="user.info" class="form-control" name="info" id="info" placeholder="Enter your gamertags/public profiles and any other info you want here..."></textarea>
                           </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save changes</button>
-                               	
+                              	<button type="button" ng-click="saveUserSettings()" class="btn btn-success" <i class="glyphicon glyphicon-ok-sign"></i> Save changes</button>
                             </div>
                       </div>
               	</form>
