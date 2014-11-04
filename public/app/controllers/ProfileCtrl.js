@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalService, userData, friendData, inboxData){
+app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageService, ModalService, userData, friendData, inboxData){
 	var friendCounter = function(status, arr){
     var counter = 0;
     for (var i = 0; i < arr.length; i++) {
@@ -139,6 +139,15 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalServ
       swal("Success!", "Your user settings have been updated.", "success");
     }, function(){
       swal("Uh oh!", "Something unexpected happened. Try savings your settings again!", "error");
+    });
+  };
+
+  $scope.viewMessage = function(message){
+    var index = $scope.inbox.indexOf(message);
+    messageService.setCurMessage(message);
+    ModalService.showModal({
+          templateUrl: "app/modaltemplates/viewmessage.html",
+          controller: "viewMessage"
     });
   };
 });

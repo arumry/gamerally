@@ -22,7 +22,10 @@
             <li class="active"><a ng-click="getGames()" data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
             <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
             <li><a ng-click="getAllFriends()" data-target="#friends" data-toggle="tab">Friends</a></li>
-            <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
+            <li><a data-target="#messages" data-toggle="tab">Messages 
+            <span class="glyphicon glyphicon-envelope"></span>
+            <span class="badge">{{inbox.length}}</span></a>
+          </li>
             <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
           </ul>   
           <div class="tab-content">
@@ -83,12 +86,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="message in inbox">
-
-                      <td><img ng-src="{{message.sender.avatarthumb}}"/></td>
-                      <td>{{message.sender.displayname}}</td>
-                      <td>{{message.sent | date:'MM/dd/yyyy @ h:mma'}}</td>
-                      <td>{{message.message.message.slice(0, 15)}}...</td>
+                    <tr ng-click="viewMessage(message)" ng-repeat="message in inbox">
+                      
+                        <td><img ng-src="{{message.sender.avatarthumb}}"/></td>
+                        <td>{{message.sender.displayname}}</td>
+                        <td>{{message.sent | date:'MM/dd/yyyy @ h:mma'}}</td>
+                        <td>{{message.message.message.slice(0, 15)}}...</td>
+                   
                     </tr>
                   </tbody>
                 </table>
@@ -106,8 +110,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="friend in allFriends">
-                      <td><a ng-click="viewFriend(friend)"><img ng-src="{{friend.friend.avatarthumb}}"/></a></td>
+                    <tr ng-click="viewFriend(friend)" ng-repeat="friend in allFriends">
+                      <td><img ng-src="{{friend.friend.avatarthumb}}"/></td>
                       <td>{{friend.friend.displayname}}</td>
                       <td>{{friend.status}}</td>
                       <td>{{friend.added | date:'MM/dd/yyyy @ h:mma'}}</td>

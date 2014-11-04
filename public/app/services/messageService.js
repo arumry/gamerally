@@ -1,11 +1,20 @@
 app.service('messageService', function($q, $http){
 	var messageReceiverId;
+	var curMessage;
 	this.setReceiverId = function(receiverId){
 		messageReceiverId = receiverId;
 	};
 
 	this.getReceiverId = function(){
 		return messageReceiverId;
+	};
+
+	this.setCurMessage = function(message){
+		curMessage = message;
+	};
+
+	this.getCurMessage = function(){
+		return curMessage;
 	};
 
 	this.sendMessage = function(id, message){

@@ -5,6 +5,7 @@
 
 textarea {
     resize: vertical;
+    width: 90%;
 }
 
 a {
