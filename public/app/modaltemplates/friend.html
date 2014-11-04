@@ -45,15 +45,12 @@
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{friend.age}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Bio</strong></span> <br/>{{friend.bio}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{friend.type}}</li>
-          </ul>             
-          <div class="panel panel-default">
-            <div class="panel-heading">Gamer Accounts<i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body"><a target="_blank" ng-href="{{friend.profileurl}}">Steam</a></div>
-          </div>
+          </ul>  
           <div class="panel panel-default text-center">
-            <div class="panel-heading"><h4 class="text-danger">Danger Zone</h4></div>
+            <div class="panel-heading"><h4 class="text-info">Actions</h4></div>
+            <button ng-click="messageSend()" class="btn btn-success">Send a message</button>
             <button ng-click="delFriend()" class="btn btn-danger">Remove Friend</button>
-          </div>
+          </div>           
         </div>
         <div class="col-sm-9">
           <ul class="nav nav-tabs">

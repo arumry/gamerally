@@ -1,0 +1,49 @@
+<style type="text/css">
+#second-overlay {
+    position: fixed;
+    left: 12.5%;
+    top: 12.5%;
+    padding: 25px; 
+    border: 2px solid black;
+    background-color: #ffffff;
+    width: 75%;
+    height: 75%;
+    z-index: 200;
+    overflow: scroll;
+}
+#second-fade {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    -moz-opacity: 0.7;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 190;
+}
+
+</style>
+<div id="second-overlay" ng-show="display"> 
+        <div class="row">
+            <div class="col-md-12 well">
+                <form>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input id="subject" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" class="form-control" required="required" placeholder="Message"></textarea>
+                            <button ng-click="cancelSend()" type="button" class="btn btn-success">Send Message</button>
+                            <button ng-click="sendMessage()" type="button" class="btn btn-warning">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+
+<div id="second-fade" ng-show="display"></div>

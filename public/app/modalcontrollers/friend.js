@@ -1,4 +1,4 @@
-app.controller('friend', ['$scope', 'close', 'userSvc', 'friendService', function($scope, close, userSvc, friendService) { 
+app.controller('friend', ['$scope', 'close', 'userSvc', 'friendService', 'ModalService', function($scope, close, userSvc, friendService, ModalService) { 
   var friend = userSvc.getCurFriend();
   $scope.friendButton = (friend.status === 'pending');
   $scope.display = true;
@@ -40,4 +40,16 @@ app.controller('friend', ['$scope', 'close', 'userSvc', 'friendService', functio
         close(); 
     });      
   };
+
+  $scope.messageSend = function(){
+    ModalService.showModal({
+          templateUrl: "app/modaltemplates/message.html",
+          controller: "message"
+    }).then(function(modal) {
+          modal.close.then(function() {
+
+          });
+    });   
+  };
+  
 }]);
