@@ -1,5 +1,6 @@
-app.controller('friend', ['$scope', 'close', 'userSvc', 'friendService', 'ModalService', function($scope, close, userSvc, friendService, ModalService) { 
+app.controller('friend', ['$scope', 'close', 'userSvc', 'friendService', 'ModalService', 'messageService', function($scope, close, userSvc, friendService, ModalService, messageService) { 
   var friend = userSvc.getCurFriend();
+  messageService.setReceiverId(friend._id);
   $scope.friendButton = (friend.status === 'pending');
   $scope.display = true;
   $scope.friend = friend.friend;

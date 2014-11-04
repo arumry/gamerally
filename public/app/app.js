@@ -28,6 +28,13 @@ app.config(['$routeProvider','$httpProvider',
               defer.resolve(friends);
             });
             return defer.promise;
+          },
+          inboxData: function($q, messageService){
+            var defer = $q.defer();
+            messageService.getAllMessages().then(function(messages){
+              defer.resolve(messages);
+            });
+            return defer.promise;
           }
         } 
       }).when('/findgamers', {

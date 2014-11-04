@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalService, userData, friendData){
+app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalService, userData, friendData, inboxData){
 	var friendCounter = function(status, arr){
     var counter = 0;
     for (var i = 0; i < arr.length; i++) {
@@ -16,8 +16,8 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, ModalServ
     }
     return 0;
   };
-  
   $scope.user = userData;
+  $scope.inbox = inboxData.inbox;
 	$scope.gameTitle = '';
   $scope.allFriends = friendData;
   $scope.pendingFriends = friendCounter('pending', friendData);

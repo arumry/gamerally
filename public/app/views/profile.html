@@ -83,11 +83,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                    <tr ng-repeat="message in inbox">
+
+                      <td><img ng-src="{{message.sender.avatarthumb}}"/></td>
+                      <td>{{message.sender.displayname}}</td>
+                      <td>{{message.sent | date:'MM/dd/yyyy @ h:mma'}}</td>
+                      <td>{{message.message.message.slice(0, 15)}}...</td>
                     </tr>
                   </tbody>
                 </table>

@@ -32,13 +32,13 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input id="subject" type="text" />
+                            <input ng-model="subject" id="subject" type="text" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea name="message" id="message" class="form-control" required="required" placeholder="Message"></textarea>
-                            <button ng-click="cancelSend()" type="button" class="btn btn-success">Send Message</button>
-                            <button ng-click="sendMessage()" type="button" class="btn btn-warning">Cancel</button>
+                            <textarea ng-model="message" name="message" id="message" class="form-control" required="required" placeholder="Message"></textarea>
+                            <button ng-click="sendMessage()" type="button" class="btn btn-success">Send Message</button>
+                            <button ng-click="cancelSend()" type="button" class="btn btn-warning">Cancel</button>
                         </div>
                     </div>
                 </form>
