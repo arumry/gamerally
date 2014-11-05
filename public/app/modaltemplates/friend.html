@@ -65,6 +65,7 @@
                         <tr>
                           <th>Cover Art</th>
                           <th>Game</th>
+                          <th>Platform</th>
                           <th>Time Available</th>
                         </tr>
                       </thead>
@@ -72,6 +73,7 @@
                         <tr ng-repeat="game in friend.games">
                           <td><img ng-src="{{game.thumb}}"/></td>
                           <td><h4>{{game.title}}</h4></td>
+                          <td><h4>{{game.platform}}</h4></td>
                           <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5></td>
                         </tr>
                       </tbody>

@@ -36,6 +36,7 @@
                     <tr>
                       <th>Cover Art</th>
                       <th>Game</th>
+                      <th>Platform</th>
                       <th>Time Available</th>
                     </tr>
                   </thead>
@@ -45,7 +46,8 @@
                          <button type="button" ng-click="deleteGame(game)" class="btn btn-danger">Delete</button>
                       </td>
                       <td><h4>{{game.title}}</h4></td>
-                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button type="button" ng-click="editGame(game)" class="btn btn-primary">Edit time</button></td>
+                      <td><h4>{{game.platform}}</h4></td>
+                      <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5><button type="button" ng-click="editGame(game)" class="btn btn-primary">Edit game</button></td>
                     </tr>
                   </tbody>
                 </table>

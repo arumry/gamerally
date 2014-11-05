@@ -99,7 +99,7 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
              } else {
               userSvc.editGame(game).then(function(updated){
                 if(updated === 'true'){
-                  swal("Tick tock!", "The time was changed successfully!", "success");
+                  swal("Success!", "The changes to your game were successful!", "success");
                 } else {
                   swal("Hmmm...", "Something went wrong. Try again!", "error");
                 }
