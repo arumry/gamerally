@@ -7,16 +7,16 @@ app.controller('gameEdit', ['$scope', 'close', 'userSvc', function($scope, close
   $scope.hstep = 1;
   $scope.mstep = 15;
   $scope.game = game;
-  $scope.submitTime = function(){
+  $scope.submitGame = function(){
     $scope.display = false;
-    var gameObj = {};
     var avail = {
       start: new Date($scope.starttime).getTime(),
       end: new Date($scope.endtime).getTime()
-    }
-    gameObj.avail = avail;
-    gameObj.platform = $scope.platform;
-    close(gameObj);
+    };
+    game.platform = $scope.platform;
+    game.avail = avail;
+    
+    close(game);
   };
   $scope.cancelGame = function(){
     close();

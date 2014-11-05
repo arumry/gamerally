@@ -71,11 +71,10 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
           templateUrl: "app/modaltemplates/gameEdit.html",
           controller: "gameEdit"
         }).then(function(modal) {
-          modal.close.then(function(gameObj) {
-             if(!times){
+          modal.close.then(function(game) {
+             if(!game){
              	return;
              } else {
-             	game.avail = gameObj.times;
              	userSvc.postGame(game).then(function(updated){
              		if(updated === 'true'){
                   swal("Woot!", "Your game has been added!", "success");
@@ -90,17 +89,14 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
 
   $scope.editGame = function(game){
     userSvc.setCurGame(game);
-    console.log(game);
     ModalService.showModal({
-          templateUrl: "app/modaltemplates/editGame.html",
+          templateUrl: "app/modaltemplates/gameEdit.html",
           controller: "gameEdit"
         }).then(function(modal) {
-          modal.close.then(function(gameObj) {
-             if(!gameObj){
+          modal.close.then(function(game) {
+             if(!game){
               return;
              } else {
-              game.avail = gameObj.times;
-              game.platform = gameObj.platform;
               userSvc.editGame(game).then(function(updated){
                 if(updated === 'true'){
                   swal("Tick tock!", "The time was changed successfully!", "success");
