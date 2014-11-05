@@ -34,4 +34,22 @@ app.service('messageService', function($q, $http){
 		});
 		return defer.promise;
 	};
+
+	this.delMessage = function(id){
+		var defer = $q.defer();
+		$http.delete('/message/' + id).then(function(data){
+			var result = data.data;
+			defer.resolve(result);
+		});
+		return defer.promise;
+	};
+
+	this.delAllMessages = function(){
+		var defer = $q.defer();
+		$http.delete('/messages').then(function(data){
+			var result = data.data;
+			defer.resolve(result);
+		});
+		return defer.promise;
+	};
 });

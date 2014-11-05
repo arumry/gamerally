@@ -16,6 +16,13 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
     }
     return 0;
   };
+
+  var getMessage = function(){
+    messageService.getAllMessages().then(function(messages){
+                $scope.inbox = messages.inbox;
+    });
+  };
+
   $scope.user = userData;
   $scope.inbox = inboxData.inbox;
 	$scope.gameTitle = '';
@@ -93,7 +100,7 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
   };
 
   $scope.deleteGame = function(game){
-    var id = game['_id'];
+    var id = game._id;
     var index = $scope.user.games.indexOf(game);
     swal({title: "Are you sure you want to delete " + game.title + " ?",   
     text: "You will not be able to recover this game after it is deleted!",   
@@ -148,6 +155,36 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
     ModalService.showModal({
           templateUrl: "app/modaltemplates/viewmessage.html",
           controller: "viewMessage"
+    }).then(function(modal) {
+        modal.close.then(function() {
+            getMessage();
+        });
     });
+  };
+
+  $scope.deleteAllMail = function(){
+    swal({title: "Are you sure you want to delete all your mail?",   
+    text: "You will not be able to recover any of your mail!",   
+    type: "warning",   
+    showCancelButton: true,   
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "Be gone with it all!",   
+    cancelButtonText: "No! I want the mail.",   
+    closeOnConfirm: false,   
+    closeOnCancel: false }, function(isConfirm){
+      if (isConfirm) { 
+        messageService.delAllMessages().then(function(result){
+          if(result === 'true'){
+            swal("Deleted!", "Your mail has been deleted!", "success");
+            getMessage();
+          } else {
+            swal("Oh no!", "Something went wrong. Try again!", "error");
+          }
+        });
+      } else { swal("Cancelled", "Your mail is safe :)", "error"); } 
+    });
+  };
+  $scope.refreshMessages = function(){
+    getMessage();
   };
 });

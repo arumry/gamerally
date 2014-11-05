@@ -49,6 +49,7 @@
             <h2><span class="text-primary">Message: </span><small>{{message}}</small></h2>
             <button class="btn btn-success" ng-click="messageReply()">Reply</button>
             <button class="btn btn-warning" ng-click="cancelReply()">Close</button>
+            <button class="btn btn-danger" ng-click="deleteMessage()">Delete message</button>
             <div ng-show="replyActive">
               <br />
               <input ng-model="rSubject" type="text" placeholder="Subject">

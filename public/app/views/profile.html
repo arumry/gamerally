@@ -22,9 +22,8 @@
             <li class="active"><a ng-click="getGames()" data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
             <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
             <li><a ng-click="getAllFriends()" data-target="#friends" data-toggle="tab">Friends</a></li>
-            <li><a data-target="#messages" data-toggle="tab">Messages 
-            <span class="glyphicon glyphicon-envelope"></span>
-            <span class="badge">{{inbox.length}}</span></a>
+            <li><a ng-click="refreshMessages()" data-target="#messages" data-toggle="tab">Messages <span class="glyphicon glyphicon-envelope"></span>
+            <span> {{inbox.length}}</span></a>
           </li>
             <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
           </ul>   
@@ -67,6 +66,7 @@
                           <div ng-repeat="(key, value) in game.platforms">
                             {{value}}
                           </div>
+                          <br />
                           <p>{{game.short_description}}</p>
                           <p><a ng-click="addGame(game)" class="btn btn-primary" role="button">Add game</a></p>
                         </div>
@@ -83,16 +83,15 @@
                       <th>Display Name</th>
                       <th>Time Sent</th>
                       <th>Message</th>
+                      <th><button ng-click="deleteAllMail()" class="btn btn-danger">Delete all</button></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr ng-click="viewMessage(message)" ng-repeat="message in inbox">
-                      
                         <td><img ng-src="{{message.sender.avatarthumb}}"/></td>
                         <td>{{message.sender.displayname}}</td>
                         <td>{{message.sent | date:'MM/dd/yyyy @ h:mma'}}</td>
-                        <td>{{message.message.message.slice(0, 15)}}...</td>
-                   
+                        <td>{{message.message.message.slice(0, 15)}}...</td>                 
                     </tr>
                   </tbody>
                 </table>
@@ -142,12 +141,51 @@
                           <input ng-model="user.age" id="age" type="number" size="6" name="age" min="0" max="100">
                         </div>
                       </div>
+                      <div class="form-group">
+                        <div class="col-xs-6">
+                          <label for="DropDownTimeZone"><h4>Timezone </h4></label>
+                          <select name="DropDownTimezone" id="DropDownTimezone">
+                                  <option value="-12.0">(GMT -12:00) Eniwetok, Kwajalein</option>
+                                  <option value="-11.0">(GMT -11:00) Midway Island, Samoa</option>
+                                  <option value="-10.0">(GMT -10:00) Hawaii</option>
+                                  <option value="-9.0">(GMT -9:00) Alaska</option>
+                                  <option value="-8.0">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+                                  <option value="-7.0">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+                                  <option value="-6.0">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+                                  <option value="-5.0">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                                  <option value="-4.0">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                                  <option value="-3.5">(GMT -3:30) Newfoundland</option>
+                                  <option value="-3.0">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+                                  <option value="-2.0">(GMT -2:00) Mid-Atlantic</option>
+                                  <option value="-1.0">(GMT -1:00 hour) Azores, Cape Verde Islands</option>
+                                  <option value="0.0">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                                  <option value="1.0">(GMT +1:00 hour) Brussels, Copenhagen, Madrid, Paris</option>
+                                  <option value="2.0">(GMT +2:00) Kaliningrad, South Africa</option>
+                                  <option value="3.0">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                                  <option value="3.5">(GMT +3:30) Tehran</option>
+                                  <option value="4.0">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                                  <option value="4.5">(GMT +4:30) Kabul</option>
+                                  <option value="5.0">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                                  <option value="5.5">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+                                  <option value="5.75">(GMT +5:45) Kathmandu</option>
+                                  <option value="6.0">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                                  <option value="7.0">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+                                  <option value="8.0">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+                                  <option value="9.0">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                                  <option value="9.5">(GMT +9:30) Adelaide, Darwin</option>
+                                  <option value="10.0">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                                  <option value="11.0">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                                  <option value="12.0">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group">   
                           <div class="col-xs-12">
                               <label for="info"><h4>Info </h4></label>
                               <textarea ng-model="user.info" class="form-control" name="info" id="info" placeholder="Enter your gamertags/public profiles and any other info you want here..."></textarea>
                           </div>
                       </div>
+
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
@@ -155,9 +193,7 @@
                             </div>
                       </div>
               	</form>
-              </div>
-               
-              </div><!--/tab-pane-->
-          </div><!--/tab-content-->
-
-        </div><!--/col-9-->
+              </div>        
+          </div>
+        </div>
+    </div>

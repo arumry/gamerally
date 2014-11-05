@@ -27,4 +27,29 @@ app.controller('viewMessage', ['$scope', 'close', 'messageService', function($sc
       }
     });
   };
+
+  $scope.deleteMessage = function(){
+    var id = message._id;
+    swal({title: "Are you sure you want to delete this message?",   
+    text: "You will not be able to recover this message after it is deleted!",   
+    type: "warning",   
+    showCancelButton: true,   
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "Be gone with it!",   
+    cancelButtonText: "No! Keep the message.",   
+    closeOnConfirm: false,   
+    closeOnCancel: false }, function(isConfirm){
+      if (isConfirm) { 
+        messageService.delMessage(id).then(function(result){
+          if(result === 'true'){
+            swal("Boom!", "Message incinerated!", "success");
+            close();
+          } else {
+            swal("Oh no!", "Something went wrong. Try again!", "error");
+            close();
+          }
+        });
+      } else { swal("Cancelled", "Your message is safe :)", "error"); } 
+    });
+  };
 }]);

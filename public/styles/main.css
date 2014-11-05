@@ -8,6 +8,10 @@ textarea {
     width: 90%;
 }
 
+td th {
+    cursor: pointer;
+}
+
 a {
     cursor: pointer;
 }
