@@ -23,7 +23,19 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
     });
   };
 
+  var timeZone = function(){
+    var userObj = {};
+    var timezone = jstz.determine();
+    var tName = timezone.name();
+    if($scope.user.timezone !== tName) {
+      $scope.user.timezone = tName;
+      userObj.timezone = tName;
+      userSvc.setUserSettings(userObj);
+    }
+  };
+  
   $scope.user = userData;
+  timeZone();
   $scope.inbox = inboxData.inbox;
 	$scope.gameTitle = '';
   $scope.allFriends = friendData;
@@ -54,16 +66,16 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
   };
 
 	$scope.addGame = function(game){
-		userSvc.setCurGame(game.title);
+		userSvc.setCurGame(game);
 		ModalService.showModal({
-          templateUrl: "app/modaltemplates/gameTime.html",
-          controller: "gameTime"
+          templateUrl: "app/modaltemplates/gameEdit.html",
+          controller: "gameEdit"
         }).then(function(modal) {
-          modal.close.then(function(times) {
+          modal.close.then(function(gameObj) {
              if(!times){
              	return;
              } else {
-             	game.avail = times;
+             	game.avail = gameObj.times;
              	userSvc.postGame(game).then(function(updated){
              		if(updated === 'true'){
                   swal("Woot!", "Your game has been added!", "success");
@@ -76,18 +88,20 @@ app.controller('ProfileCtrl', function($scope, userSvc, friendService, messageSe
         });
 	};
 
-  $scope.editGameTime = function(game){
-    userSvc.setCurGame(game.title);
+  $scope.editGame = function(game){
+    userSvc.setCurGame(game);
+    console.log(game);
     ModalService.showModal({
-          templateUrl: "app/modaltemplates/gameTime.html",
-          controller: "gameTime"
+          templateUrl: "app/modaltemplates/editGame.html",
+          controller: "gameEdit"
         }).then(function(modal) {
-          modal.close.then(function(times) {
-             if(!times){
+          modal.close.then(function(gameObj) {
+             if(!gameObj){
               return;
              } else {
-              game.avail = times;
-              userSvc.editGameTime(game).then(function(updated){
+              game.avail = gameObj.times;
+              game.platform = gameObj.platform;
+              userSvc.editGame(game).then(function(updated){
                 if(updated === 'true'){
                   swal("Tick tock!", "The time was changed successfully!", "success");
                 } else {

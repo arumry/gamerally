@@ -1,0 +1,46 @@
+<style type="text/css">
+#overlay {
+    position: fixed;
+    left: 15%;
+    top: 10%;
+    padding: 25px; 
+    border: 2px solid black;
+    background-color: #ffffff;
+    width: 70%;
+    height: 80%;
+    z-index: 100;
+    overflow: scroll;
+}
+#fade {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    -moz-opacity: 0.7;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+}
+
+</style>
+<div id="overlay" ng-show="display">
+    <h6>What time are you available to play {{game.title}} normally?</h6>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-2">
+                <label for="starttime">Start</label>
+                <timepicker id="starttime" ng-model="starttime" hour-step="hstep" minute-step="mstep"></timepicker>
+                
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label class="time" for="endtime">End</label>
+                <timepicker id="endtime" ng-model="endtime" hour-step="hstep" minute-step="mstep"></timepicker>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" ng-click="submitTime()">Submit</button>
+                <button class="btn btn-danger" ng-click="cancelGame()">Cancel</button>
+            </div>
+        </div>       
+</div>
+<div id="fade" ng-show="display"></div>

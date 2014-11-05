@@ -11,8 +11,8 @@ app.service('userSvc', function($q, $http){
 		return curFriend;
 	};
 
-	this.setCurGame = function(title){
-		curGame = title;
+	this.setCurGame = function(game){
+		curGame = game;
 	};
 
 	this.getCurGame = function(){
@@ -38,7 +38,8 @@ app.service('userSvc', function($q, $http){
 			defer.reject();
 		});
 		return defer.promise;
-	}
+	};
+
 	this.getGameByTitle = function(title){
 		var defer = $q.defer();
 		$http.get('/game?title='+title).then(function(data){
@@ -59,11 +60,10 @@ app.service('userSvc', function($q, $http){
 		});
 		return defer.promise;
 	};
-	this.editGameTime = function(game){
-		var id = game['_id'];
-		var times = game.avail;
+	this.editGame = function(game){
+		var id = game._id;
 		var defer = $q.defer();
-		$http.put('/game/' + id, times).then(function(data){
+		$http.put('/game/' + id, game).then(function(data){
 			result = data.data;
 			defer.resolve(result);
 		}, function(err){
