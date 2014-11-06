@@ -39,7 +39,16 @@ app.config(['$routeProvider','$httpProvider',
         } 
       }).when('/findgamers', {
         templateUrl: './app/views/findgamers.html',
-        controller: 'FindCtrl'
+        controller: 'FindCtrl',
+        resolve: {
+          matchedGamers: function($q, matchService){
+            var defer = $q.defer();
+            matchService.getGamers().then(function(gamers){
+              defer.resolve(gamers);
+            });
+            return defer.promise;
+          }
+        }
       }).otherwise({
         redirectTo: '/profile'
       });
