@@ -1,4 +1,4 @@
-var app = angular.module('gally', ['ngRoute', 'SlideViewer', 'angular-loading-bar', 'angularModalService', 'ui.bootstrap']);
+var app = angular.module('gally', ['ngRoute', 'angular-loading-bar', 'angularModalService', 'ui.bootstrap']);
 
 //Router
 app.config(['$routeProvider','$httpProvider',
@@ -37,16 +37,23 @@ app.config(['$routeProvider','$httpProvider',
             return defer.promise;
           }
         } 
-      }).when('/findgamers', {
-        templateUrl: './app/views/findgamers.html',
+      }).when('/findgamer', {
+        templateUrl: './app/views/findgamer.html',
         controller: 'FindCtrl',
         resolve: {
-          matchedGamers: function($q, matchService){
+          matchedGamer: function($q, matchService){
             var defer = $q.defer();
-            matchService.getGamers().then(function(gamers){
-              defer.resolve(gamers);
+            matchService.getMatchGamer().then(function(gamer){
+              defer.resolve(gamer);
             });
             return defer.promise;
+          },
+          userData: function($q, userSvc){
+            var defer = $q.defer();
+            userSvc.getUser().then(function(user){
+                return defer.resolve(user);
+            });
+            return defer.promise;   
           }
         }
       }).otherwise({

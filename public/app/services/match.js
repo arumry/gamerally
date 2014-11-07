@@ -1,12 +1,11 @@
 app.service('matchService', function($q, $http){
-       this.getGamers = function(){
+       this.getMatchGamer = function(){
               var defer = $q.defer();
-              $http.get('/gamers/similar').then(function(data){
-                     var gamers = data.data;
-                     console.log(data);
-                     defer.resolve(gamers);
-
-              })
+              $http.get('/gamer/similar').then(function(data){
+                     var gamer = data.data;
+                     console.log(gamer);
+                     defer.resolve(gamer);
+              });
               return defer.promise;
        };
 });
