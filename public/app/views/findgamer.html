@@ -7,5 +7,15 @@
 </div>
 <div class="col-xs-12 col-md-6 pull-right players">
 	<h2 class="text-center">Player 2</h2>
-	
+	<div slide-source="gamer in matchedGamers" class="slide-viewer" next-arrow-class="icon-rightarrow" previous-arrow-class="icon-leftarrow">
+	    <h1>{{gamer.displayname}}</h1>
+	    <h2>{{gamer.age}} years old</h2>
+	    <h4>{{gamer.percentage}}% match</h4>
+	    <br />
+	    <img class="pointer" ng-src="{{gamer.avatarlg}}" alt="" /><br/>
+	    <p>{{gamer.info.slice(0,30)}}...</p>
+	    <div class="btn btn-success">Friend request</div>
+	    <div class="btn btn-danger">Do not show again</div>
+	    <div class="btn btn-warning">Skip</div>
+	</div>
 </div>

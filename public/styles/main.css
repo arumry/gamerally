@@ -1,4 +1,9 @@
 /* Navbar CSS */
+
+.pointer {
+    cursor: pointer;
+}
+
 .clearfix {
     clear: both;
 }

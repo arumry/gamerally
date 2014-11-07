@@ -3,7 +3,7 @@
 .slide-viewer * { margin: 0; }
 .slide-viewer { margin-top: 25px; height: 400px; text-align: center; width 100%; background: #DDD; position: relative;}
 .slide-viewer p { text-align: center; }
-.slide-viewer img { width: 100%; }
+.slide-viewer img { width: 35%; height: 45%;}
 
 /* [CONTROLS - IMAGES] Set the background images for the controls (sprite based) */
 .leftarrow, .rightarrow, .smpt, .ctrl-btn.play:hover, .ctrl-btn.pause:hover { background: url("sprite.png") no-repeat; }
@@ -70,5 +70,5 @@
 /* [HELPERS] Assorted styles to help in creating slides */
 .right-bar-heading { right: 0; position: absolute; background: #C0C0C0; opacity: 0.75; filter: alpha(opacity=75); padding: 45px; margin-top: 25px; }
 .full-width-heading { right: 35px; position: absolute; background: #C0C0C0; opacity: 0.75; filter: alpha(opacity=75); padding: 25px; margin-top: 25px; top: 25px; left: 35px; }
-.slide-image img { max-width: 100%; position: absolute; bottom: -75px; left: 0; }
+.slide-image img { max-width: 50%; position: absolute; bottom: -75px; left: 0; }
 .viewer-selected-area .viewer-image { display: none; }
