@@ -105,17 +105,17 @@ strong {
 /* Login form CSS */
 
 .login-title {
-    font-size: 8vw;
+    font-size: 50px;
     text-shadow: 2px 2px #2F3030;
 }
 
 .lead {
     text-shadow: 2px 2px #2F3030;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .form-signin {
-  margin-top: 26%;
+  margin-top: 225px;
 }
 
 .signup-text {
@@ -124,8 +124,11 @@ strong {
 }
 
 .steam-back { 
-    background: url('../img/platforms.jpg') no-repeat center;
+    background: url('../img/platforms.jpg') no-repeat;
     background-color: #000000;
+    background-size: auto auto;
+    background-attachment: fixed;
+    background-position: 50% 120px;
 }
 
 /*Game search area*/
@@ -155,9 +158,9 @@ strong {
   min-height: 100%;
   height: auto;
   /* Negative indent footer by its height */
-  margin: 0 auto -60px;
+  margin: 0 auto -30px;
   /* Pad bottom by footer height */
-  padding: 0 0 60px;
+  padding: 0 0 30px;
 }
 
 #footer {
