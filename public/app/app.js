@@ -45,6 +45,7 @@ app.config(['$routeProvider','$httpProvider',
             var defer = $q.defer();
             matchService.getMatchGamer().then(function(gamer){
               defer.resolve(gamer);
+              console.log(gamer);
             });
             return defer.promise;
           },

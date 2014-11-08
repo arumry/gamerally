@@ -3,9 +3,9 @@
     	<div class="col-sm-2"><a ng-href="{{user.profileurl}}" class="pull-right"><img title="Profile image" class="img-circle img-responsive" ng-src="{{user.avatarmd}}"></a></div>
     </div>
     <div class="row">
-  		<div class="col-sm-3"><!--left col-->
+  		<div id="black-fill" class="col-sm-3"><!--left col-->
           <ul class="list-group">
-            <li class="list-group-item text-muted">Profile</li>
+            <li class="list-group-item black-fill lobster">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{user.displayname}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{user.age}}</li>
             <li class="list-group-item"><span class="pull-left"><strong> Info</strong></span> <br/>{{user.info}}</li>
@@ -13,7 +13,7 @@
             <li class="list-group-item text-right"><span class="pull-left"><strong> Timezone</strong></span> {{user.timezone}}</li>
           </ul>             
           <ul class="list-group">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+            <li class="list-group-item black-fill lobster">Activity <i class="fa fa-dashboard fa-1x"></i></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Incoming Friend Requests</strong></span> {{pendingFriends}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Sent Friend Requests</strong></span> {{requestedFriends}}</li>
           </ul> 
@@ -23,7 +23,7 @@
             <li class="active"><a ng-click="getGames()" data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
             <li><a data-target="#newgames" data-toggle="tab">Add new games</a></li>
             <li><a ng-click="getAllFriends()" data-target="#friends" data-toggle="tab">Friends</a></li>
-            <li><a ng-click="refreshMessages()" data-target="#messages" data-toggle="tab">Messages <span class="glyphicon glyphicon-envelope"></span>
+            <li><a  ng-click="refreshMessages()" data-target="#messages" data-toggle="tab">Messages <span class="glyphicon glyphicon-envelope"></span>
             <span> {{inbox.length}}</span></a>
           </li>
             <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
@@ -34,10 +34,10 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Cover Art</th>
-                      <th>Game</th>
-                      <th>Platform</th>
-                      <th>Time Available</th>
+                      <th><strong>Cover Art</strong></th>
+                      <th><strong>Game</strong></th>
+                      <th><strong>Platform</strong></th>
+                      <th><strong>Time Available</strong></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -82,10 +82,10 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Profile</th>
-                      <th>Display Name</th>
-                      <th>Time Sent</th>
-                      <th>Message</th>
+                      <th><strong>Profile</strong></th>
+                      <th><strong>Display Name</strong></th>
+                      <th><strong>Time Sent</strong></th>
+                      <th><strong>Message</strong></th>
                       <th><button ng-click="deleteAllMail()" class="btn btn-danger">Delete all</button></th>
                     </tr>
                   </thead>
@@ -105,10 +105,10 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Profile</th>
-                      <th>Display Name</th>
-                      <th>Status</th>
-                      <th>Date added</th>
+                      <th><strong>Profile</strong></th>
+                      <th><strong>Display Name</strong></th>
+                      <th><strong>Status</strong></th>
+                      <th><strong>Date added</strong></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,20 +133,20 @@
                       </div>
                       <div class="form-group"> 
                           <div class="col-xs-6">
-                              <label for="type"><h4>Gamer Type </h4></label>
+                              <label for="type"><h4><strong>Gamer Type </strong></h4></label>
                               <select ng-model="selectedType" ng-options="type.name for type in gamerTypes">
                               </select>
                           </div>
                       </div>
                       <div class="form-group">
                         <div class="col-xs-6">
-                          <label for="age"><h4>Age </h4></label>
+                          <label for="age"><h4><strong>Age </strong></h4></label>
                           <input ng-model="user.age" id="age" type="number" size="6" name="age" min="0" max="100">
                         </div>
                       </div>
                       <div class="form-group">   
                           <div class="col-xs-12">
-                              <label for="info"><h4>Info </h4></label>
+                              <label for="info"><h4><strong>Info </strong></h4></label>
                               <textarea ng-model="user.info" class="form-control" name="info" id="info" placeholder="Enter your gamertags/public profiles and any other info you want here..."></textarea>
                           </div>
                       </div>

@@ -1,11 +1,7 @@
-/* Navbar CSS */
-
-.pointer {
-    cursor: pointer;
-}
-
-.clearfix {
-    clear: both;
+/* Main CSS */
+html,
+body {
+  height: 100%;
 }
 
 textarea {
@@ -15,11 +11,34 @@ textarea {
 
 td th {
     cursor: pointer;
+    color: #000000;
 }
 
 a {
     cursor: pointer;
 }
+
+strong {
+  color: #000000;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.lobster {
+    font-family: 'Lobster', cursive;
+}
+
+.title {
+    font-size: 30px;
+}
+/* Navbar CSS */
+
 .navbar-toggle .icon-bar:nth-of-type(2) {
 	  top: 1px;
 }
@@ -47,22 +66,66 @@ a {
 	  transform: rotate(-45deg);
 }
 
-/* Login form CSS */
-.form-signin {
-    position: relative;
-    font-size: 16px;
-    height: auto;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    max-width: 320px;
-    padding: 15px;
-    margin: 150px auto;
+.menu-item {
+    font-size: 50px;
 }
 
-.steam-button {
-    cursor: pointer;
+#navbar li .green {
+  color: #93C54B;
+}
+
+#navbar li .black {
+  color: #000000;
+}
+
+#navbar li .green:hover {
+  color: #FFFFFF;
+}
+
+#navbar li .black:hover {
+  color: #FFFFFF;
+}
+
+#black-fill .black-fill {
+  background: #000000;
+  font-size: 24px;
+  color: #93C54B;
+}
+
+.nav.nav-tabs li a {
+  color: #000000;
+  background: #93C54B;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+/* Login form CSS */
+
+.login-title {
+    font-size: 8vw;
+    text-shadow: 2px 2px #2F3030;
+}
+
+.lead {
+    text-shadow: 2px 2px #2F3030;
+    font-size: 30px;
+}
+
+.form-signin {
+  margin-top: 26%;
+}
+
+.signup-text {
+    text-shadow: 2px 2px #2F3030;
+    font-weight: bolder;
+}
+
+.steam-back { 
+    background: url('../img/platforms.jpg') no-repeat center;
+    background-color: #000000;
 }
 
 /*Game search area*/
@@ -84,4 +147,24 @@ a {
     height: 400px;
     margin-top: 25px;
     background-color: #DDDDDD;
+}
+
+
+/*Sticky footer*/
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+#footer {
+  height: 60px;
+}
+
+.footer-text {
+    text-shadow: 2px 2px #2F3030;
+    font-weight: bolder;
 }

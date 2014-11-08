@@ -8,44 +8,46 @@
 	<link rel="stylesheet" href="./styles/slideviewer.css">
 	<link rel="stylesheet" href="./styles/loadingbar.css">
 	<link rel="stylesheet" href="./styles/sweet-alert.css">
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
-	<body ng-controller="mainctrl">
-			<nav ng-show="!(isActive())" class="navbar navbar-inverse">
-			  <div class="container-fluid">
-				  <div class="navbar-header">
-					  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					      <span class="icon-bar"></span>
-					      <span class="icon-bar"></span>
-					      <span class="icon-bar"></span>
-					  </button>
-					  <a class="navbar-brand" href="/#/profile">GamerAlly</a>
-				  </div>
-				  <div class="navbar-collapse collapse">
-				    <ul class="nav navbar-nav">
-				      <li class="menu-item"><a href="/#/findgamer">Find a similar gamer</a>
-				      </li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li class="menu-item"><a href="/#/profile">Profile</a></li>
-				        		<li class="menu-item"><a href="/auth/steam/logout">Logout</a></li>
-				        	</ul>
-						</li>
-			        </ul>
-				  </div>
-			  </div>
-		   </nav>
-		<div class="container-fluid">
-		   <div ng-view=""></div>
-		</div>
-		<div class="text-center">
-		  <hr />
-		  <footer class="clearfix">
-		  	<a href="/#/login">© 2014 GamerAlly</a>
-		  </footer>
-		</div>
+	<body ng-controller="mainctrl" ng-class="bgimage()">	
+		  <div id="wrap">
+				<nav id="navbar" ng-show="!(isActive())" class="navbar navbar-inverse">
+					  <div class="container-fluid">
+						  <div class="navbar-header">
+							  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							      <span class="icon-bar"></span>
+							      <span class="icon-bar"></span>
+							      <span class="icon-bar"></span>
+							  </button>
+							  <a class="navbar-brand title lobster" href="/#/profile">GamerAlly</a>
+						  </div>
+						  <div class="navbar-collapse collapse">
+						    <ul class="nav navbar-nav">
+						      <li class="menu-item"><a class="title black" href="/#/findgamer">Find a gamer</a>
+						      </li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle black">Account <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li class="menu-item"><a href="/#/profile">Profile</a></li>
+						        		<li class="menu-item"><a href="/auth/steam/logout">Logout</a></li>
+						        	</ul>
+								</li>
+					        </ul>
+						  </div>
+					  </div>
+				</nav>
+				<div class="container-fluid">
+				   <div ng-view=""></div>
+				</div>
+			</div>	
+			<div id="footer" class="text-center">
+			  <footer class="clearfix sticky-footer">
+			  	<a class="footer-text" href="/#/login">© 2014 GamerAlly</a>
+			  </footer>
+			</div>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>

@@ -33,6 +33,10 @@
     "passport-steam": "^0.1.4",
     "q": "^1.0.1",
     "request": "^2.47.0",
-    "unirest": "^0.2.9"
+    "unirest": "^0.2.9",
+    "mongoose": "~3.8.18"
+  },
+  "devDependencies": {
+    "migrate": "~0.1.6"
   }
 }
