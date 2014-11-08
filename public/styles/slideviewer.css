@@ -1,9 +1,9 @@
 /*****************************************************/
 /* [BASELINE] Styles for the slide viewer and arrows */
 .slide-viewer * { margin: 0; }
-.slide-viewer { margin-top: 25px; height: 400px; text-align: center; width 100%; background: #DDD; position: relative;}
+.slide-viewer { margin-top: 25px; height: 400px; text-align: center; width 100%; background: #93C54B; position: relative;}
 .slide-viewer p { text-align: center; }
-.slide-viewer img { width: 25%; height: 45%;}
+.slide-viewer img { width: 150px; height: 150px;}
 
 /* [CONTROLS - IMAGES] Set the background images for the controls (sprite based) */
 .leftarrow, .rightarrow, .smpt, .ctrl-btn.play:hover, .ctrl-btn.pause:hover { background: url("sprite.png") no-repeat; }

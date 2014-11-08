@@ -30,14 +30,14 @@
 </style>
 <div id="overlay" ng-show="display">
         <div class="row">
-        <div class="col-sm-10"><h1>{{friend.displayname}}</h1></div>
+        <div class="col-sm-10"><h1><strong>{{friend.displayname}}</strong></h1></div>
         <div class="col-sm-2"><a ng-href="{{friend.profileurl}}" class="pull-right"><img title="Profile image" class="img-circle img-responsive" ng-src="{{friend.avatarmd}}"></a>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3"><!--left col-->
+        <div id="black-fill" class="col-sm-3"><!--left col-->
           <ul class="list-group">
-            <li class="list-group-item text-muted">Profile</li>
+            <li class="list-group-item black-fill lobster">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{friend.displayname}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{friend.age}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Info</strong></span> <br/>{{friend.info}}</li>
@@ -46,8 +46,9 @@
           </ul>         
         </div>
         <div class="col-sm-9">
-            <h2><span class="text-primary">Subject: </span>{{subject}}</h2>
-            <h2><span class="text-primary">Message: </span><small>{{message}}</small></h2>
+            <h2><span class="text-primary">Subject: </span><strong>{{subject}}</strong></h2>
+            <h2><span class="text-primary">Message: </span></h2>
+            <h4><strong>{{message}}</strong></h4>
             <button class="btn btn-success" ng-click="messageReply()">Reply</button>
             <button class="btn btn-warning" ng-click="cancelReply()">Close</button>
             <button class="btn btn-danger" ng-click="deleteMessage()">Delete message</button>

@@ -30,7 +30,7 @@
 </style>
 <div id="overlay" ng-show="display">
         <div class="row">
-        <div class="col-sm-10"><h1>{{friend.displayname}}</h1>
+        <div class="col-sm-10"><h1><strong>{{friend.displayname}}</strong></h1>
           <button ng-show="friendButton" ng-click="acceptFriend()"class="btn btn-success friend-buttons">Accept Friend</button>
           <button ng-click="closeFriend()" class="btn btn-warning friend-buttons">Close</button>
         </div>
@@ -38,15 +38,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3"><!--left col-->
+        <div id="black-fill" class="col-sm-3"><!--left col-->
           <ul class="list-group">
-            <li class="list-group-item text-muted">Profile</li>
+            <li class="list-group-item black-fill lobster">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{friend.displayname}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{friend.age}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong> Info</strong></span> <br/>{{friend.info}}</li>
+            <li class="list-group-item"><span class="pull-left"><strong> Info</strong></span> <br/>{{friend.info}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{friend.type}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong> Timezone</strong></span> {{friend.timezone}}</li>
-          </ul>  
+          </ul>    
           <div class="panel panel-default text-center">
             <div class="panel-heading"><h4 class="text-info">Actions</h4></div>
             <button ng-click="messageSend()" class="btn btn-success">Send a message</button>
@@ -63,10 +63,10 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>Cover Art</th>
-                          <th>Game</th>
-                          <th>Platform</th>
-                          <th>Time Available</th>
+                          <th><strong>Cover Art</strong></th>
+                          <th><strong>Game</strong></th>
+                          <th><strong>Platform</strong></th>
+                          <th><strong>Time Available</strong></th>
                         </tr>
                       </thead>
                       <tbody>

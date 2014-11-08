@@ -146,13 +146,23 @@ strong {
     height: auto;
 }
 
+h1.players {
+  color: #93C54B;
+}
+
 .player1 {
     height: 400px;
     margin-top: 25px;
-    background-color: #DDDDDD;
+    background-color: #93C54B;
 }
 
+.find-gamer-back {
+  background: #000000;
+}
 
+.find-name-push {
+  padding-top: 25px;
+}
 /*Sticky footer*/
 #wrap {
   min-height: 100%;
@@ -168,6 +178,6 @@ strong {
 }
 
 .footer-text {
-    text-shadow: 2px 2px #2F3030;
+    text-shadow: 0.5px 0.5px #2F3030;
     font-weight: bolder;
 }
