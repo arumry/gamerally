@@ -7,4 +7,12 @@ app.service('matchService', function($q, $http){
               });
               return defer.promise;
        };
+       this.negateMatch = function(id){
+       		var defer = $q.defer();
+              $http.put('/gamer/' + id).then(function(data){
+                     var result = data.data;
+                     defer.resolve(result);
+              });
+              return defer.promise;
+       };
 });

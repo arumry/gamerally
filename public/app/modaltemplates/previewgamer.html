@@ -1,0 +1,81 @@
+<style type="text/css">
+#overlay {
+    position: fixed;
+    left: 1%;
+    top: 1%;
+    padding: 25px; 
+    border: 2px solid black;
+    background-color: #ffffff;
+    width: 98%;
+    height: 98%;
+    z-index: 100;
+    overflow: scroll;
+}
+#fade {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    -moz-opacity: 0.7;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+}
+
+.friend-buttons {
+  margin: 5px;
+}
+</style>
+<div id="overlay" ng-show="display">
+        <div class="row">
+        <div class="col-sm-10"><h1><strong>{{friend.displayname}}</strong></h1>
+          <button ng-click="closeGamer()" class="btn btn-warning friend-buttons">Close</button>
+        </div>
+        <div class="col-sm-2"><a ng-href="{{friend.profileurl}}" class="pull-right"><img previewGamerpreviewGamertitle="Profile image" class="img-circle img-responsive" ng-src="{{friend.avatarmd}}"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div id="black-fill" class="col-sm-3"><!--left col-->
+          <ul class="list-group">
+            <li class="list-group-item black-fill lobster">Profile</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Display Name</strong></span> {{friend.displayname}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Age</strong></span> {{friend.age}}</li>
+            <li class="list-group-item"><span class="pull-left"><strong> Info</strong></span> <br/>{{friend.info}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Gamer Type</strong></span> {{friend.type}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong> Timezone</strong></span> {{friend.timezone}}</li>
+          </ul>              
+        </div>
+        <div class="col-sm-9">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#curgames" data-toggle="tab">Current Online Games</a></li>
+          </ul>   
+          <div class="tab-content">
+                <div class="tab-pane active" id="curgames">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th><strong>Cover Art</strong></th>
+                          <th><strong>Game</strong></th>
+                          <th><strong>Platform</strong></th>
+                          <th><strong>Time Available</strong></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="game in friend.games">
+                          <td><img ng-src="{{game.thumb}}"/></td>
+                          <td><h4>{{game.title}}</h4></td>
+                          <td><h4>{{game.platform}}</h4></td>
+                          <td><h5>{{game.avail.start | date : 'shortTime'}} - {{game.avail.end | date : 'shortTime'}}</h5></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                 </div> 
+             </div>
+          </div>
+        </div>
+</div>
+<div id="fade" ng-show="display"></div>

@@ -35,3 +35,8 @@ db.once('open', function() {
 app.listen(port, function(){
 	console.log('Server running on port: ' + port);
 });
+
+//Global catch all error
+process.on('uncaughtException', function (err) {
+  console.log(err.stack);
+});

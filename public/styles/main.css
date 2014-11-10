@@ -163,6 +163,11 @@ h1.players {
 .find-name-push {
   padding-top: 25px;
 }
+
+.shadow-image {
+  box-shadow: 2px 2px #2F3030;
+}
+
 /*Sticky footer*/
 #wrap {
   min-height: 100%;
