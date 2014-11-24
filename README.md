@@ -1,6 +1,8 @@
 GamerAlly
 =========
 
+gamerally.net
+
 GamerAlly is a web app to help gamers find other gamers to play with online.
 
   - Add online games you currently play
